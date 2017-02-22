@@ -1,0 +1,153 @@
+<project name="HRINTEGRATION" basedir="." default="build">
+
+	<property name="hrintegrationhome" value="." />
+	<property name="build.dir" value="${hrintegrationhome}/target" />
+	<property name="build.src.dir" value="${hrintegrationhome}/src/main/java" />
+	<property name="build.src.lib" value="${hrintegrationhome}/lib" />
+	<property name="build.src.resources" value="${hrintegrationhome}/src/main/resources" />
+	<property name="build.src.webapp" value="${hrintegrationhome}/src/main/webapp" />
+
+	<property name="hrintegrationbuild.dir" value="${build.dir}/rest" />
+	<property name="hrintegrationbuild.lib" value="${hrintegrationbuild.dir}/WEB-INF/lib" />
+	<property name="hrintegrationbuild.classes.dir" value="${hrintegrationbuild.dir}/WEB-INF/classes" />
+
+	<property name="war.file.name" value="HRIntegration.war" />
+	<property name="war.file.output" value="${build.dir}/${war.file.name}" />
+	<property name="war.full.path" value="${hrintegrationhome}/target/${war.file.name}" />
+	
+
+	<path id="the.classpath">
+		<fileset dir="${build.src.lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+ 
+	<target name="build" depends="check_params, clean_up, compile, generate_war" />
+
+	<target name="check_params">
+		<echo message="Environment: ${env}" />
+		<condition property="has.env">
+			<or>
+			<!--	<equals arg1="${env}" arg2="b2buat" />
+				<equals arg1="${env}" arg2="b2btst" /> -->
+				<equals arg1="${env}" arg2="local" />
+			</or>
+		</condition>
+		<fail unless="has.env">
+			Environment not defined!
+			Sample deployment commands:
+
+			Environment Deployment Commands:
+			B2BUAT ant -Denv=b2buat build-deploy
+			B2BTST ant -Denv=b2btst build-deploy
+
+			Environment Remote Deployment Commands:
+			B2BUAT ant -Denv=b2buat build-rdeploy
+			B2BTST ant -Denv=b2btst build-rdeploy
+		</fail>
+
+		<loadproperties srcfile="build.${env}.properties" />
+	<!--	<echo message="Remote Server1: ${b2b.deployment.remote.server1}" /> -->
+		<echo message="Remote Server1: ${deployment.remote.server}" />
+		<echo message="Remote Directory: ${deployment.dir}" />
+	</target>
+
+	<target name="install-jars" description="Install ANT optional jars">
+		<get dest="${ant.home}/lib/jsch-0.1.45_1.jar"
+			src="http://search.maven.org/remotecontent?filepath=com/jcraft/jsch/0.1.45/jsch-0.1.45.jar"
+			verbose="${compile.verbose}" />
+	</target>
+
+	<target name="compile" depends="check_params">
+		<echo message="Compiling ${build.src.dir}.." />
+
+		<javac srcdir="${build.src.dir}" destdir="${hrintegrationbuild.classes.dir}">
+			<classpath refid="the.classpath" />
+		</javac>
+		
+		<copy todir="${hrintegrationbuild.classes.dir}">
+							<fileset dir="${build.src.resources}" />
+							<filterchain>
+								<replaceregex pattern="\$\{" replace="{" />
+								<filterreader classname="org.apache.tools.ant.filters.ReplaceTokens">
+									<param type="propertiesfile" value="build.${env}.properties" />
+									<param type="tokenchar" name="begintoken" value="{" />
+									<param type="tokenchar" name="endtoken" value="}" />
+								</filterreader>
+							</filterchain>
+						</copy>
+						<echo>Copy done</echo>
+		
+		<copy todir="${hrintegrationbuild.classes.dir}">
+					<fileset dir="${build.src.resources}" />
+					<filterchain>
+						<replaceregex pattern="\$\{" replace="{" />
+						<filterreader classname="org.apache.tools.ant.filters.ReplaceTokens">
+							<param type="propertiesfile" value="build.${env}.properties" />
+							<param type="tokenchar" name="begintoken" value="{" />
+							<param type="tokenchar" name="endtoken" value="}" />
+						</filterreader>
+					</filterchain>
+				</copy>
+		
+		<copy todir="${hrintegrationbuild.classes.dir}">
+			<fileset dir="${build.src.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="generate_war">
+		<echo message="Creating WAR file...${war.file.name}" />
+		<jar destfile="${war.file.output}" basedir="${hrintegrationbuild.dir}">
+			<manifest>
+				<attribute name="Built-By" value="Invensense" />
+				<!--<attribute name="Class-Path" value="${libs.project}"/> -->
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="clean_up">
+		<delete dir="${build.dir}" />
+		<mkdir dir="${hrintegrationbuild.dir}" />
+		<copy todir="${hrintegrationbuild.dir}">
+			<fileset dir="${build.src.webapp}" />
+		</copy>
+		<copy todir="${hrintegrationbuild.lib}">
+			<fileset dir="${build.src.lib}" />
+		</copy>
+		<mkdir dir="${hrintegrationbuild.classes.dir}" />
+	</target>
+
+	<target name="build-rdeploy">
+		<antcall target="build" />
+		<antcall target="rdeploy" />
+	</target>
+
+	<target name="build-deploy">
+	
+		<antcall target="build" />
+		<antcall target="deploy" />
+		
+	</target>
+
+	
+	<target name="deploy">
+		<loadproperties srcfile="build.${env}.properties" />
+
+		<echo message="Copy WAR file ${war.full.path} to ${deployment.dir}" />
+		<copy todir="${deployment.dir}" file="${war.full.path}"
+			verbose="true" />
+		<echo
+			message="Copy WAR file ${war.full.path} to ${deployment.remote.server}:${deployment.dir}" />
+		
+		<copy file="${war.full.path}" tofile="D:\apache\apache-tomcat-7.0.37\webapps\${war.file.name}"/>
+		<!--<scp verbose="true" failonerror="true" trust="true"
+			keyfile="${user.home}/.ssh/id_rsa" todir="${deployment.remote.server}:${deployment.dir}"
+			file="${war.full.path}" /> -->
+		<echo message="Copy WAR file ${war.full.path} DONE!" />
+	</target>
+	
+	
+</project>

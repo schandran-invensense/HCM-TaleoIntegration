@@ -1,0 +1,221 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+
+
+
+
+
+	<context:component-scan base-package="com.invensense" />
+	<mvc:default-servlet-handler />
+	<mvc:annotation-driven />
+
+	<!-- Map returned view name "rssViewer" to bean id "rssViewer" -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+
+	<mvc:view-controller path="index.html" view-name="index" />
+	<mvc:view-controller path="home" view-name="index" />
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="UtilitiesDao" class="com.invensense.dao.impl.UtilitiesDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+<!-- <bean id="domainConfiguration" class="org.apache.commons.configuration.DatabaseConfiguration">
+   <constructor-arg>
+     <ref bean="dbDataSource" />
+   </constructor-arg>
+   <constructor-arg value="ERL_3PT_DOMAIN_CONFIG" /> DB Table
+   <constructor-arg value="CONFIG_NAME" /> DB Key Column
+   <constructor-arg value="CONFIG_VALUE" /> DB Value Column
+</bean> -->
+ 
+<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+ <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+ <property name="properties">
+  <bean class="org.apache.commons.configuration.ConfigurationConverter" factory-method="getProperties">
+   <constructor-arg>
+     <ref bean="domainConfiguration" />
+   </constructor-arg>
+  </bean>
+ </property>
+</bean>
+ -->
+	<!-- <task:annotation-driven /> -->
+	<bean id="myAppScheduleJobs" class="com.invensense.controller.ScheduleController" />
+
+
+
+	<task:scheduled-tasks>
+		<task:scheduled ref="myAppScheduleJobs" method="employeeUpdate"
+			cron="${cron.empupdate}" />
+	<!-- 	<task:scheduled ref="myAppScheduleJobs" method="employeeUpdate" cron="0 0/30 * 1/1 * ?" /> -->	
+		<task:scheduled ref="myAppScheduleJobs" method="createEmployee"
+			cron="${cron.empcreate}" />
+		<task:scheduled ref="myAppScheduleJobs" method="newhireUpdate"
+			cron="${cron.newhire}" />
+			
+		<task:scheduled ref="myAppScheduleJobs" method="employeeTerminate" 
+			cron="{cron.empterminate}" />	
+		<!-- <task:scheduled ref="myAppScheduleJobs" method="employeeAssignmentUpdate" 
+			cron="* 0/26 * * * *" /> <task:scheduled ref="myAppScheduleJobs" method="createTaleoLocation" 
+			cron="0 0/50 * * * *" />  -->
+	</task:scheduled-tasks>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+	<!-- <bean id="springSecurityFilterChain" class="org.springframework.web.filter.DelegatingFilterProxy"/> -->
+
+	<bean id="connectionParams" class="com.invensense.utils.TaleoConstants">
+		<property name="taleoUser">
+			<value>${taleo.user}</value>
+		</property>
+		<property name="taleoPass">
+			<value>${taleo.pass}</value>
+		</property>
+		<property name="taleoCompany">
+			<value>${taleo.companycode}</value>
+		</property>
+
+		<property name="taleoUrl">
+			<value>${taleo.url}</value>
+		</property>
+	</bean>
+
+	<bean id="connectionParams1" class="com.invensense.utils.HCMConstants">
+		<property name="hcmUser">
+			<value>${hcm.user}</value>
+		</property>
+		<property name="hcmPass">
+			<value>${hcm.pass}</value>
+		</property>
+		<property name="hcmUrl">
+			<value>${hcm.url}</value>
+		</property>
+		<property name="hcmUploadUrl">
+			<value>${hcm.uploadurl}</value>
+		</property>
+		<property name="hcmUploadUser">
+			<value>${hcm.uploaduser}</value>
+		</property>
+		<property name="hcmUploadPass">
+			<value>${hcm.uploadpass}</value>
+		</property>
+			<property name="hcmLoaderWSDLUrl">
+			<value>${hcm.loaderwsdlurl}</value>
+		</property>
+	</bean>
+
+	<bean id="createEmployee" class="com.invensense.utils.CreateEmployeeConstants">
+		<property name="createFolder">
+			<value>${create.folder}</value>
+		</property>
+		<property name="createPersonId">
+			<value>${create.personId}</value>
+		</property>
+		<property name="createEffectiveEndDate">
+			<value>${create.effectiveEndDate}</value>
+		</property>
+
+		<property name="createBusinessGroupId">
+			<value>${create.businessgroupid}</value>
+		</property>
+		<property name="createBusinessGroupId1">
+			<value>${create.businessgroupid1}</value>
+		</property>
+		<property name="createAddressType">
+			<value>${create.addresstype}</value>
+		</property>
+		<property name="createPersonNumber">
+			<value>${create.personnumber}</value>
+		</property>
+		<property name="createPrimaryPhId">
+			<value>${create.primaryphoneid}</value>
+		</property>
+
+		<property name="createPrimaryNIDId">
+			<value>${create.primarynidid}</value>
+		</property>
+		<property name="createAddressUsageId">
+			<value>${create.addressusageid}</value>
+		</property>
+		<property name="createPersonNameId">
+			<value>${create.personnameid}</value>
+		</property>
+		<property name="createEmailAddressId">
+			<value>${create.emailaddressid}</value>
+		</property>
+
+		<property name="createPersonLegislativeId">
+			<value>${create.personlegid}</value>
+		</property>
+		<property name="createPersonTypeUsageId">
+			<value>${create.persontypeusageid}</value>
+		</property>
+		<property name="createPersonTypeId">
+			<value>${create.persontypeid}</value>
+		</property>
+
+		<property name="createAssignmentId">
+			<value>${create.assignmentid}</value>
+		</property>
+		<property name="createFreezeStartDate">
+			<value>${create.freezestartdate}</value>
+		</property>
+
+		<property name="createAssignStatusTypeId">
+			<value>${create.assignstatustypeid}</value>
+		</property>
+		<property name="createProposedWorkerType">
+			<value>${create.proposedworkertype}</value>
+		</property>
+		
+		<property name="createAssignmentNumber">
+			<value>${create.assignmentnumber}</value>
+		</property>
+		<property name="createBusinessUnitId">
+			<value>${create.businessunitid}</value>
+		</property>
+
+		<property name="createPeriodOfServiceId">
+			<value>${create.periodofserviceid}</value>
+		</property>
+		<property name="createWorkTermsAssignId">
+			<value>${create.worktermsassgnid}</value>
+		</property>
+		<property name="createActionCode">
+			<value>${create.actioncode}</value>
+		</property>
+		<property name="createSystemPersonType">
+			<value>${create.systempersontype}</value>
+		</property>
+	</bean>
+
+</beans>

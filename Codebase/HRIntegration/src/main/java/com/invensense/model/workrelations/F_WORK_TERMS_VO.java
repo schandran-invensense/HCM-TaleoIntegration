@@ -1,0 +1,879 @@
+package com.invensense.model.workrelations;
+
+public class F_WORK_TERMS_VO {
+	private String ACTION_CODE;
+	private String ACTION_OCCURRENCE_ID;
+	private String ASSIGNMENT_ID;
+	private String ASSIGNMENT_NAME;
+	private String ASSIGNMENT_NUMBER;
+	private String ASSIGNMENT_SEQUENCE;
+	private String ASSIGNMENT_STATUS_TYPE;
+	private String ASSIGNMENT_STATUS_TYPE_ID;
+	private String ASSIGNMENT_TYPE;
+	private String AUTO_END_FLAG;
+	private String BARGAINING_UNIT_CODE;
+	private String BILLING_TITLE;
+	private String BUSINESS_GROUP_ID;
+	private String BUSINESS_UNIT_ID;
+	private String CAGR_GRADE_DEF_ID;
+	private String CAGR_ID_FLEX_NUM;
+	private String COLLECTIVE_AGREEMENT_ID;
+	private String CONTRACT_ID;
+	private String DATE_PROBATION_END;
+	private String DEFAULT_CODE_COMB_ID;
+	private String DUTIES_TYPE;
+	private String EFFECTIVE_END_DATE;
+	private String EFFECTIVE_LATEST_CHANGE;
+	private String EFFECTIVE_SEQUENCE;
+	private String EFFECTIVE_START_DATE;
+	private String EMPLOYEE_CATEGORY;
+	private String EMPLOYMENT_CATEGORY;
+	private String ESTABLISHMENT_ID;
+	private String EXPENSE_CHECK_ADDRESS;
+	private String FREQUENCY;
+	private String GRADE_ID;
+	private String GRADE_LADDER_PGM_ID;
+	private String HOURLY_SALARIED_CODE;
+	private String INTERNAL_BUILDING;
+	private String INTERNAL_FLOOR;
+	private String INTERNAL_LOCATION;
+	private String INTERNAL_MAILSTOP;
+	private String INTERNAL_OFFICE_NUMBER;
+	private String JOB_ID;
+	private String JOB_POST_SOURCE_NAME;
+	private String LABOUR_UNION_MEMBER_FLAG;
+	private String LEGAL_ENTITY_ID;
+	private String LEGISLATION_CODE;
+	private String LINKAGE_TYPE;
+	private String LOCATION_ID;
+	private String MANAGER_FLAG;
+	private String NORMAL_HOURS;
+	private String NOTICE_PERIOD;
+	private String NOTICE_PERIOD_UOM;
+	private String ORGANIZATION_ID;
+	private String PARENT_ASSIGNMENT_ID;
+	private String PEOPLE_GROUP_ID;
+	private String PERIOD_OF_SERVICE_ID;
+	private String PERSON_ID;
+	private String PERSON_TYPE_ID;
+	private String PO_HEADER_ID;
+	private String PO_LINE_ID;
+	private String POSITION_ID;
+	private String POSITION_OVERRIDE_FLAG;
+	private String POSTING_CONTENT_ID;
+	private String PRIMARY_ASSIGNMENT_FLAG;
+	private String PRIMARY_FLAG;
+	private String PRIMARY_WORK_RELATION_FLAG;
+	private String PRIMARY_WORK_TERMS_FLAG;
+	private String PROBATION_PERIOD;
+	private String PROBATION_UNIT;
+	private String PROJECT_TITLE;
+	private String PROJECTED_ASSIGNMENT_END;
+	private String PROPOSED_WORKER_TYPE;
+	private String REASON_CODE;
+	private String RECORD_CREATOR;
+	private String RETIREMENT_AGE;
+	private String RETIREMENT_DATE;
+	private String SAL_REVIEW_PERIOD;
+	private String SAL_REVIEW_PERIOD_FREQUENCY;
+	private String SET_OF_BOOKS_ID;
+	private String SOURCE_TYPE;
+	private String SPECIAL_CEILING_STEP_ID;
+	private String STEP_ENTRY_DATE;
+	private String SYSTEM_PERSON_TYPE;
+	private String TAX_ADDRESS_ID;
+	private String TIME_NORMAL_FINISH;
+	private String TIME_NORMAL_START;
+	private String VENDOR_ASSIGNMENT_NUMBER;
+	private String VENDOR_EMPLOYEE_NUMBER;
+	private String VENDOR_ID;
+	private String VENDOR_SITE_ID;
+	private String WORK_AT_HOME;
+	private String WORK_TERMS_ASSIGNMENT_ID;
+	private String FREEZE_START_DATE;
+	private String FREEZE_UNTIL_DATE;
+	private String FT_ALTERNATE_REC;
+	private String FT_ALTERNATE_KEY;
+	private String PROJECTED_START_DATE;
+
+	public String getPROJECTED_START_DATE() {
+		return PROJECTED_START_DATE;
+	}
+
+	public void setPROJECTED_START_DATE(String pROJECTED_START_DATE) {
+		PROJECTED_START_DATE = pROJECTED_START_DATE;
+	}
+
+	public String toDelimitedString() {
+		return ACTION_CODE + "|" + ACTION_OCCURRENCE_ID + "|" + ASSIGNMENT_ID + "|" + ASSIGNMENT_NAME + "|"
+				+ ASSIGNMENT_NUMBER + "|" + ASSIGNMENT_SEQUENCE + "|" + ASSIGNMENT_STATUS_TYPE + "|"
+				+ ASSIGNMENT_STATUS_TYPE_ID + "|" + ASSIGNMENT_TYPE + "|" + AUTO_END_FLAG + "|" + BARGAINING_UNIT_CODE
+				+ "|" + BILLING_TITLE + "|" + BUSINESS_GROUP_ID + "|" + BUSINESS_UNIT_ID + "|" + CAGR_GRADE_DEF_ID + "|"
+				+ CAGR_ID_FLEX_NUM + "|" + COLLECTIVE_AGREEMENT_ID + "|" + CONTRACT_ID + "|" + DATE_PROBATION_END + "|"
+				+ DEFAULT_CODE_COMB_ID + "|" + DUTIES_TYPE + "|" + EFFECTIVE_END_DATE + "|" + EFFECTIVE_LATEST_CHANGE
+				+ "|" + EFFECTIVE_SEQUENCE + "|" + EFFECTIVE_START_DATE + "|" + EMPLOYEE_CATEGORY + "|"
+				+ EMPLOYMENT_CATEGORY + "|" + ESTABLISHMENT_ID + "|" + EXPENSE_CHECK_ADDRESS + "|" + FREQUENCY + "|"
+				+ GRADE_ID + "|" + GRADE_LADDER_PGM_ID + "|" + HOURLY_SALARIED_CODE + "|" + INTERNAL_BUILDING + "|"
+				+ INTERNAL_FLOOR + "|" + INTERNAL_LOCATION + "|" + INTERNAL_MAILSTOP + "|" + INTERNAL_OFFICE_NUMBER
+				+ "|" + JOB_ID + "|" + JOB_POST_SOURCE_NAME + "|" + LABOUR_UNION_MEMBER_FLAG + "|" + LEGAL_ENTITY_ID
+				+ "|" + LEGISLATION_CODE + "|" + LINKAGE_TYPE + "|" + LOCATION_ID + "|" + MANAGER_FLAG + "|"
+				+ NORMAL_HOURS + "|" + NOTICE_PERIOD + "|" + NOTICE_PERIOD_UOM + "|" + ORGANIZATION_ID + "|"
+				+ PARENT_ASSIGNMENT_ID + "|" + PEOPLE_GROUP_ID + "|" + PERIOD_OF_SERVICE_ID + "|" + PERSON_ID + "|"
+				+ PERSON_TYPE_ID + "|" + PO_HEADER_ID + "|" + PO_LINE_ID + "|" + POSITION_ID + "|"
+				+ POSITION_OVERRIDE_FLAG + "|" + POSTING_CONTENT_ID + "|" + PRIMARY_ASSIGNMENT_FLAG + "|" + PRIMARY_FLAG
+				+ "|" + PRIMARY_WORK_RELATION_FLAG + "|" + PRIMARY_WORK_TERMS_FLAG + "|" + PROBATION_PERIOD + "|"
+				+ PROBATION_UNIT + "|" + PROJECT_TITLE + "|" + PROJECTED_ASSIGNMENT_END + "|" + PROPOSED_WORKER_TYPE
+				+ "|" + REASON_CODE + "|" + RECORD_CREATOR + "|" + RETIREMENT_AGE + "|" + RETIREMENT_DATE + "|"
+				+ SAL_REVIEW_PERIOD + "|" + SAL_REVIEW_PERIOD_FREQUENCY + "|" + SET_OF_BOOKS_ID + "|" + SOURCE_TYPE
+				+ "|" + SPECIAL_CEILING_STEP_ID + "|" + STEP_ENTRY_DATE + "|" + SYSTEM_PERSON_TYPE + "|"
+				+ TAX_ADDRESS_ID + "|" + TIME_NORMAL_FINISH + "|" + TIME_NORMAL_START + "|" + VENDOR_ASSIGNMENT_NUMBER
+				+ "|" + VENDOR_EMPLOYEE_NUMBER + "|" + VENDOR_ID + "|" + VENDOR_SITE_ID + "|" + WORK_AT_HOME + "|"
+				+ WORK_TERMS_ASSIGNMENT_ID + "|" + FREEZE_START_DATE + "|" + FREEZE_UNTIL_DATE + "|" + FT_ALTERNATE_REC
+				+ "|" + FT_ALTERNATE_KEY + "|" + PROJECTED_START_DATE;
+	}
+
+	public String getACTION_CODE() {
+		return ACTION_CODE;
+	}
+
+	public void setACTION_CODE(String aCTION_CODE) {
+		ACTION_CODE = aCTION_CODE;
+	}
+
+	public String getASSIGNMENT_ID() {
+		return ASSIGNMENT_ID;
+	}
+
+	public void setASSIGNMENT_ID(String aSSIGNMENT_ID) {
+		ASSIGNMENT_ID = aSSIGNMENT_ID;
+	}
+
+	public String getASSIGNMENT_NAME() {
+		return ASSIGNMENT_NAME;
+	}
+
+	public void setASSIGNMENT_NAME(String aSSIGNMENT_NAME) {
+		ASSIGNMENT_NAME = aSSIGNMENT_NAME;
+	}
+
+	public String getASSIGNMENT_NUMBER() {
+		return ASSIGNMENT_NUMBER;
+	}
+
+	public void setASSIGNMENT_NUMBER(String aSSIGNMENT_NUMBER) {
+		ASSIGNMENT_NUMBER = aSSIGNMENT_NUMBER;
+	}
+
+	public String getASSIGNMENT_SEQUENCE() {
+		return ASSIGNMENT_SEQUENCE;
+	}
+
+	public void setASSIGNMENT_SEQUENCE(String aSSIGNMENT_SEQUENCE) {
+		ASSIGNMENT_SEQUENCE = aSSIGNMENT_SEQUENCE;
+	}
+
+	public String getASSIGNMENT_STATUS_TYPE() {
+		return ASSIGNMENT_STATUS_TYPE;
+	}
+
+	public void setASSIGNMENT_STATUS_TYPE(String aSSIGNMENT_STATUS_TYPE) {
+		ASSIGNMENT_STATUS_TYPE = aSSIGNMENT_STATUS_TYPE;
+	}
+
+	public String getASSIGNMENT_STATUS_TYPE_ID() {
+		return ASSIGNMENT_STATUS_TYPE_ID;
+	}
+
+	public void setASSIGNMENT_STATUS_TYPE_ID(String aSSIGNMENT_STATUS_TYPE_ID) {
+		ASSIGNMENT_STATUS_TYPE_ID = aSSIGNMENT_STATUS_TYPE_ID;
+	}
+
+	public String getASSIGNMENT_TYPE() {
+		return ASSIGNMENT_TYPE;
+	}
+
+	public void setASSIGNMENT_TYPE(String aSSIGNMENT_TYPE) {
+		ASSIGNMENT_TYPE = aSSIGNMENT_TYPE;
+	}
+
+	public String getAUTO_END_FLAG() {
+		return AUTO_END_FLAG;
+	}
+
+	public void setAUTO_END_FLAG(String aUTO_END_FLAG) {
+		AUTO_END_FLAG = aUTO_END_FLAG;
+	}
+
+	public String getBARGAINING_UNIT_CODE() {
+		return BARGAINING_UNIT_CODE;
+	}
+
+	public void setBARGAINING_UNIT_CODE(String bARGAINING_UNIT_CODE) {
+		BARGAINING_UNIT_CODE = bARGAINING_UNIT_CODE;
+	}
+
+	public String getBILLING_TITLE() {
+		return BILLING_TITLE;
+	}
+
+	public void setBILLING_TITLE(String bILLING_TITLE) {
+		BILLING_TITLE = bILLING_TITLE;
+	}
+
+	public String getBUSINESS_GROUP_ID() {
+		return BUSINESS_GROUP_ID;
+	}
+
+	public void setBUSINESS_GROUP_ID(String bUSINESS_GROUP_ID) {
+		BUSINESS_GROUP_ID = bUSINESS_GROUP_ID;
+	}
+
+	public String getBUSINESS_UNIT_ID() {
+		return BUSINESS_UNIT_ID;
+	}
+
+	public void setBUSINESS_UNIT_ID(String bUSINESS_UNIT_ID) {
+		BUSINESS_UNIT_ID = bUSINESS_UNIT_ID;
+	}
+
+	public String getCAGR_GRADE_DEF_ID() {
+		return CAGR_GRADE_DEF_ID;
+	}
+
+	public void setCAGR_GRADE_DEF_ID(String cAGR_GRADE_DEF_ID) {
+		CAGR_GRADE_DEF_ID = cAGR_GRADE_DEF_ID;
+	}
+
+	public String getCAGR_ID_FLEX_NUM() {
+		return CAGR_ID_FLEX_NUM;
+	}
+
+	public void setCAGR_ID_FLEX_NUM(String cAGR_ID_FLEX_NUM) {
+		CAGR_ID_FLEX_NUM = cAGR_ID_FLEX_NUM;
+	}
+
+	public String getCOLLECTIVE_AGREEMENT_ID() {
+		return COLLECTIVE_AGREEMENT_ID;
+	}
+
+	public void setCOLLECTIVE_AGREEMENT_ID(String cOLLECTIVE_AGREEMENT_ID) {
+		COLLECTIVE_AGREEMENT_ID = cOLLECTIVE_AGREEMENT_ID;
+	}
+
+	public String getCONTRACT_ID() {
+		return CONTRACT_ID;
+	}
+
+	public void setCONTRACT_ID(String cONTRACT_ID) {
+		CONTRACT_ID = cONTRACT_ID;
+	}
+
+	public String getDATE_PROBATION_END() {
+		return DATE_PROBATION_END;
+	}
+
+	public void setDATE_PROBATION_END(String dATE_PROBATION_END) {
+		DATE_PROBATION_END = dATE_PROBATION_END;
+	}
+
+	public String getDEFAULT_CODE_COMB_ID() {
+		return DEFAULT_CODE_COMB_ID;
+	}
+
+	public void setDEFAULT_CODE_COMB_ID(String dEFAULT_CODE_COMB_ID) {
+		DEFAULT_CODE_COMB_ID = dEFAULT_CODE_COMB_ID;
+	}
+
+	public String getDUTIES_TYPE() {
+		return DUTIES_TYPE;
+	}
+
+	public void setDUTIES_TYPE(String dUTIES_TYPE) {
+		DUTIES_TYPE = dUTIES_TYPE;
+	}
+
+	public String getEFFECTIVE_END_DATE() {
+		return EFFECTIVE_END_DATE;
+	}
+
+	public void setEFFECTIVE_END_DATE(String eFFECTIVE_END_DATE) {
+		EFFECTIVE_END_DATE = eFFECTIVE_END_DATE;
+	}
+
+	public String getEFFECTIVE_LATEST_CHANGE() {
+		return EFFECTIVE_LATEST_CHANGE;
+	}
+
+	public void setEFFECTIVE_LATEST_CHANGE(String eFFECTIVE_LATEST_CHANGE) {
+		EFFECTIVE_LATEST_CHANGE = eFFECTIVE_LATEST_CHANGE;
+	}
+
+	public String getEFFECTIVE_SEQUENCE() {
+		return EFFECTIVE_SEQUENCE;
+	}
+
+	public void setEFFECTIVE_SEQUENCE(String eFFECTIVE_SEQUENCE) {
+		EFFECTIVE_SEQUENCE = eFFECTIVE_SEQUENCE;
+	}
+
+	public String getEFFECTIVE_START_DATE() {
+		return EFFECTIVE_START_DATE;
+	}
+
+	public void setEFFECTIVE_START_DATE(String eFFECTIVE_START_DATE) {
+		EFFECTIVE_START_DATE = eFFECTIVE_START_DATE;
+	}
+
+	public String getEMPLOYEE_CATEGORY() {
+		return EMPLOYEE_CATEGORY;
+	}
+
+	public void setEMPLOYEE_CATEGORY(String eMPLOYEE_CATEGORY) {
+		EMPLOYEE_CATEGORY = eMPLOYEE_CATEGORY;
+	}
+
+	public String getEMPLOYMENT_CATEGORY() {
+		return EMPLOYMENT_CATEGORY;
+	}
+
+	public void setEMPLOYMENT_CATEGORY(String eMPLOYMENT_CATEGORY) {
+		EMPLOYMENT_CATEGORY = eMPLOYMENT_CATEGORY;
+	}
+
+	public String getESTABLISHMENT_ID() {
+		return ESTABLISHMENT_ID;
+	}
+
+	public void setESTABLISHMENT_ID(String eSTABLISHMENT_ID) {
+		ESTABLISHMENT_ID = eSTABLISHMENT_ID;
+	}
+
+	public String getEXPENSE_CHECK_ADDRESS() {
+		return EXPENSE_CHECK_ADDRESS;
+	}
+
+	public void setEXPENSE_CHECK_ADDRESS(String eXPENSE_CHECK_ADDRESS) {
+		EXPENSE_CHECK_ADDRESS = eXPENSE_CHECK_ADDRESS;
+	}
+
+	public String getFREQUENCY() {
+		return FREQUENCY;
+	}
+
+	public void setFREQUENCY(String fREQUENCY) {
+		FREQUENCY = fREQUENCY;
+	}
+
+	public String getGRADE_ID() {
+		return GRADE_ID;
+	}
+
+	public void setGRADE_ID(String gRADE_ID) {
+		GRADE_ID = gRADE_ID;
+	}
+
+	public String getGRADE_LADDER_PGM_ID() {
+		return GRADE_LADDER_PGM_ID;
+	}
+
+	public void setGRADE_LADDER_PGM_ID(String gRADE_LADDER_PGM_ID) {
+		GRADE_LADDER_PGM_ID = gRADE_LADDER_PGM_ID;
+	}
+
+	public String getHOURLY_SALARIED_CODE() {
+		return HOURLY_SALARIED_CODE;
+	}
+
+	public void setHOURLY_SALARIED_CODE(String hOURLY_SALARIED_CODE) {
+		HOURLY_SALARIED_CODE = hOURLY_SALARIED_CODE;
+	}
+
+	public String getINTERNAL_BUILDING() {
+		return INTERNAL_BUILDING;
+	}
+
+	public void setINTERNAL_BUILDING(String iNTERNAL_BUILDING) {
+		INTERNAL_BUILDING = iNTERNAL_BUILDING;
+	}
+
+	public String getINTERNAL_FLOOR() {
+		return INTERNAL_FLOOR;
+	}
+
+	public void setINTERNAL_FLOOR(String iNTERNAL_FLOOR) {
+		INTERNAL_FLOOR = iNTERNAL_FLOOR;
+	}
+
+	public String getINTERNAL_LOCATION() {
+		return INTERNAL_LOCATION;
+	}
+
+	public void setINTERNAL_LOCATION(String iNTERNAL_LOCATION) {
+		INTERNAL_LOCATION = iNTERNAL_LOCATION;
+	}
+
+	public String getINTERNAL_MAILSTOP() {
+		return INTERNAL_MAILSTOP;
+	}
+
+	public void setINTERNAL_MAILSTOP(String iNTERNAL_MAILSTOP) {
+		INTERNAL_MAILSTOP = iNTERNAL_MAILSTOP;
+	}
+
+	public String getINTERNAL_OFFICE_NUMBER() {
+		return INTERNAL_OFFICE_NUMBER;
+	}
+
+	public void setINTERNAL_OFFICE_NUMBER(String iNTERNAL_OFFICE_NUMBER) {
+		INTERNAL_OFFICE_NUMBER = iNTERNAL_OFFICE_NUMBER;
+	}
+
+	public String getJOB_ID() {
+		return JOB_ID;
+	}
+
+	public void setJOB_ID(String jOB_ID) {
+		JOB_ID = jOB_ID;
+	}
+
+	public String getJOB_POST_SOURCE_NAME() {
+		return JOB_POST_SOURCE_NAME;
+	}
+
+	public void setJOB_POST_SOURCE_NAME(String jOB_POST_SOURCE_NAME) {
+		JOB_POST_SOURCE_NAME = jOB_POST_SOURCE_NAME;
+	}
+
+	public String getLABOUR_UNION_MEMBER_FLAG() {
+		return LABOUR_UNION_MEMBER_FLAG;
+	}
+
+	public void setLABOUR_UNION_MEMBER_FLAG(String lABOUR_UNION_MEMBER_FLAG) {
+		LABOUR_UNION_MEMBER_FLAG = lABOUR_UNION_MEMBER_FLAG;
+	}
+
+	public String getLEGAL_ENTITY_ID() {
+		return LEGAL_ENTITY_ID;
+	}
+
+	public void setLEGAL_ENTITY_ID(String lEGAL_ENTITY_ID) {
+		LEGAL_ENTITY_ID = lEGAL_ENTITY_ID;
+	}
+
+	public String getLEGISLATION_CODE() {
+		return LEGISLATION_CODE;
+	}
+
+	public void setLEGISLATION_CODE(String lEGISLATION_CODE) {
+		LEGISLATION_CODE = lEGISLATION_CODE;
+	}
+
+	public String getLINKAGE_TYPE() {
+		return LINKAGE_TYPE;
+	}
+
+	public void setLINKAGE_TYPE(String lINKAGE_TYPE) {
+		LINKAGE_TYPE = lINKAGE_TYPE;
+	}
+
+	public String getLOCATION_ID() {
+		return LOCATION_ID;
+	}
+
+	public void setLOCATION_ID(String lOCATION_ID) {
+		LOCATION_ID = lOCATION_ID;
+	}
+
+	public String getMANAGER_FLAG() {
+		return MANAGER_FLAG;
+	}
+
+	public void setMANAGER_FLAG(String mANAGER_FLAG) {
+		MANAGER_FLAG = mANAGER_FLAG;
+	}
+
+	public String getNORMAL_HOURS() {
+		return NORMAL_HOURS;
+	}
+
+	public void setNORMAL_HOURS(String nORMAL_HOURS) {
+		NORMAL_HOURS = nORMAL_HOURS;
+	}
+
+	public String getNOTICE_PERIOD() {
+		return NOTICE_PERIOD;
+	}
+
+	public void setNOTICE_PERIOD(String nOTICE_PERIOD) {
+		NOTICE_PERIOD = nOTICE_PERIOD;
+	}
+
+	public String getNOTICE_PERIOD_UOM() {
+		return NOTICE_PERIOD_UOM;
+	}
+
+	public void setNOTICE_PERIOD_UOM(String nOTICE_PERIOD_UOM) {
+		NOTICE_PERIOD_UOM = nOTICE_PERIOD_UOM;
+	}
+
+	public String getORGANIZATION_ID() {
+		return ORGANIZATION_ID;
+	}
+
+	public void setORGANIZATION_ID(String oRGANIZATION_ID) {
+		ORGANIZATION_ID = oRGANIZATION_ID;
+	}
+
+	public String getPARENT_ASSIGNMENT_ID() {
+		return PARENT_ASSIGNMENT_ID;
+	}
+
+	public void setPARENT_ASSIGNMENT_ID(String pARENT_ASSIGNMENT_ID) {
+		PARENT_ASSIGNMENT_ID = pARENT_ASSIGNMENT_ID;
+	}
+
+	public String getPEOPLE_GROUP_ID() {
+		return PEOPLE_GROUP_ID;
+	}
+
+	public void setPEOPLE_GROUP_ID(String pEOPLE_GROUP_ID) {
+		PEOPLE_GROUP_ID = pEOPLE_GROUP_ID;
+	}
+
+	public String getPERIOD_OF_SERVICE_ID() {
+		return PERIOD_OF_SERVICE_ID;
+	}
+
+	public void setPERIOD_OF_SERVICE_ID(String pERIOD_OF_SERVICE_ID) {
+		PERIOD_OF_SERVICE_ID = pERIOD_OF_SERVICE_ID;
+	}
+
+	public String getPERSON_ID() {
+		return PERSON_ID;
+	}
+
+	public void setPERSON_ID(String pERSON_ID) {
+		PERSON_ID = pERSON_ID;
+	}
+
+	public String getPERSON_TYPE_ID() {
+		return PERSON_TYPE_ID;
+	}
+
+	public void setPERSON_TYPE_ID(String pERSON_TYPE_ID) {
+		PERSON_TYPE_ID = pERSON_TYPE_ID;
+	}
+
+	public String getPO_HEADER_ID() {
+		return PO_HEADER_ID;
+	}
+
+	public void setPO_HEADER_ID(String pO_HEADER_ID) {
+		PO_HEADER_ID = pO_HEADER_ID;
+	}
+
+	public String getPO_LINE_ID() {
+		return PO_LINE_ID;
+	}
+
+	public void setPO_LINE_ID(String pO_LINE_ID) {
+		PO_LINE_ID = pO_LINE_ID;
+	}
+
+	public String getPOSITION_ID() {
+		return POSITION_ID;
+	}
+
+	public void setPOSITION_ID(String pOSITION_ID) {
+		POSITION_ID = pOSITION_ID;
+	}
+
+	public String getPOSITION_OVERRIDE_FLAG() {
+		return POSITION_OVERRIDE_FLAG;
+	}
+
+	public void setPOSITION_OVERRIDE_FLAG(String pOSITION_OVERRIDE_FLAG) {
+		POSITION_OVERRIDE_FLAG = pOSITION_OVERRIDE_FLAG;
+	}
+
+	public String getPOSTING_CONTENT_ID() {
+		return POSTING_CONTENT_ID;
+	}
+
+	public void setPOSTING_CONTENT_ID(String pOSTING_CONTENT_ID) {
+		POSTING_CONTENT_ID = pOSTING_CONTENT_ID;
+	}
+
+	public String getPRIMARY_ASSIGNMENT_FLAG() {
+		return PRIMARY_ASSIGNMENT_FLAG;
+	}
+
+	public void setPRIMARY_ASSIGNMENT_FLAG(String pRIMARY_ASSIGNMENT_FLAG) {
+		PRIMARY_ASSIGNMENT_FLAG = pRIMARY_ASSIGNMENT_FLAG;
+	}
+
+	public String getPRIMARY_FLAG() {
+		return PRIMARY_FLAG;
+	}
+
+	public void setPRIMARY_FLAG(String pRIMARY_FLAG) {
+		PRIMARY_FLAG = pRIMARY_FLAG;
+	}
+
+	public String getPRIMARY_WORK_RELATION_FLAG() {
+		return PRIMARY_WORK_RELATION_FLAG;
+	}
+
+	public void setPRIMARY_WORK_RELATION_FLAG(String pRIMARY_WORK_RELATION_FLAG) {
+		PRIMARY_WORK_RELATION_FLAG = pRIMARY_WORK_RELATION_FLAG;
+	}
+
+	public String getPRIMARY_WORK_TERMS_FLAG() {
+		return PRIMARY_WORK_TERMS_FLAG;
+	}
+
+	public void setPRIMARY_WORK_TERMS_FLAG(String pRIMARY_WORK_TERMS_FLAG) {
+		PRIMARY_WORK_TERMS_FLAG = pRIMARY_WORK_TERMS_FLAG;
+	}
+
+	public String getPROBATION_PERIOD() {
+		return PROBATION_PERIOD;
+	}
+
+	public void setPROBATION_PERIOD(String pROBATION_PERIOD) {
+		PROBATION_PERIOD = pROBATION_PERIOD;
+	}
+
+	public String getPROBATION_UNIT() {
+		return PROBATION_UNIT;
+	}
+
+	public void setPROBATION_UNIT(String pROBATION_UNIT) {
+		PROBATION_UNIT = pROBATION_UNIT;
+	}
+
+	public String getPROJECT_TITLE() {
+		return PROJECT_TITLE;
+	}
+
+	public void setPROJECT_TITLE(String pROJECT_TITLE) {
+		PROJECT_TITLE = pROJECT_TITLE;
+	}
+
+	public String getPROJECTED_ASSIGNMENT_END() {
+		return PROJECTED_ASSIGNMENT_END;
+	}
+
+	public void setPROJECTED_ASSIGNMENT_END(String pROJECTED_ASSIGNMENT_END) {
+		PROJECTED_ASSIGNMENT_END = pROJECTED_ASSIGNMENT_END;
+	}
+
+	public String getPROPOSED_WORKER_TYPE() {
+		return PROPOSED_WORKER_TYPE;
+	}
+
+	public void setPROPOSED_WORKER_TYPE(String pROPOSED_WORKER_TYPE) {
+		PROPOSED_WORKER_TYPE = pROPOSED_WORKER_TYPE;
+	}
+
+	public String getREASON_CODE() {
+		return REASON_CODE;
+	}
+
+	public void setREASON_CODE(String rEASON_CODE) {
+		REASON_CODE = rEASON_CODE;
+	}
+
+	public String getRECORD_CREATOR() {
+		return RECORD_CREATOR;
+	}
+
+	public void setRECORD_CREATOR(String rECORD_CREATOR) {
+		RECORD_CREATOR = rECORD_CREATOR;
+	}
+
+	public String getRETIREMENT_AGE() {
+		return RETIREMENT_AGE;
+	}
+
+	public void setRETIREMENT_AGE(String rETIREMENT_AGE) {
+		RETIREMENT_AGE = rETIREMENT_AGE;
+	}
+
+	public String getRETIREMENT_DATE() {
+		return RETIREMENT_DATE;
+	}
+
+	public void setRETIREMENT_DATE(String rETIREMENT_DATE) {
+		RETIREMENT_DATE = rETIREMENT_DATE;
+	}
+
+	public String getSAL_REVIEW_PERIOD() {
+		return SAL_REVIEW_PERIOD;
+	}
+
+	public void setSAL_REVIEW_PERIOD(String sAL_REVIEW_PERIOD) {
+		SAL_REVIEW_PERIOD = sAL_REVIEW_PERIOD;
+	}
+
+	public String getSAL_REVIEW_PERIOD_FREQUENCY() {
+		return SAL_REVIEW_PERIOD_FREQUENCY;
+	}
+
+	public void setSAL_REVIEW_PERIOD_FREQUENCY(String sAL_REVIEW_PERIOD_FREQUENCY) {
+		SAL_REVIEW_PERIOD_FREQUENCY = sAL_REVIEW_PERIOD_FREQUENCY;
+	}
+
+	public String getSET_OF_BOOKS_ID() {
+		return SET_OF_BOOKS_ID;
+	}
+
+	public void setSET_OF_BOOKS_ID(String sET_OF_BOOKS_ID) {
+		SET_OF_BOOKS_ID = sET_OF_BOOKS_ID;
+	}
+
+	public String getSOURCE_TYPE() {
+		return SOURCE_TYPE;
+	}
+
+	public void setSOURCE_TYPE(String sOURCE_TYPE) {
+		SOURCE_TYPE = sOURCE_TYPE;
+	}
+
+	public String getSPECIAL_CEILING_STEP_ID() {
+		return SPECIAL_CEILING_STEP_ID;
+	}
+
+	public void setSPECIAL_CEILING_STEP_ID(String sPECIAL_CEILING_STEP_ID) {
+		SPECIAL_CEILING_STEP_ID = sPECIAL_CEILING_STEP_ID;
+	}
+
+	public String getSTEP_ENTRY_DATE() {
+		return STEP_ENTRY_DATE;
+	}
+
+	public void setSTEP_ENTRY_DATE(String sTEP_ENTRY_DATE) {
+		STEP_ENTRY_DATE = sTEP_ENTRY_DATE;
+	}
+
+	public String getSYSTEM_PERSON_TYPE() {
+		return SYSTEM_PERSON_TYPE;
+	}
+
+	public void setSYSTEM_PERSON_TYPE(String sYSTEM_PERSON_TYPE) {
+		SYSTEM_PERSON_TYPE = sYSTEM_PERSON_TYPE;
+	}
+
+	public String getTAX_ADDRESS_ID() {
+		return TAX_ADDRESS_ID;
+	}
+
+	public void setTAX_ADDRESS_ID(String tAX_ADDRESS_ID) {
+		TAX_ADDRESS_ID = tAX_ADDRESS_ID;
+	}
+
+	public String getTIME_NORMAL_FINISH() {
+		return TIME_NORMAL_FINISH;
+	}
+
+	public void setTIME_NORMAL_FINISH(String tIME_NORMAL_FINISH) {
+		TIME_NORMAL_FINISH = tIME_NORMAL_FINISH;
+	}
+
+	public String getTIME_NORMAL_START() {
+		return TIME_NORMAL_START;
+	}
+
+	public void setTIME_NORMAL_START(String tIME_NORMAL_START) {
+		TIME_NORMAL_START = tIME_NORMAL_START;
+	}
+
+	public String getVENDOR_ASSIGNMENT_NUMBER() {
+		return VENDOR_ASSIGNMENT_NUMBER;
+	}
+
+	public void setVENDOR_ASSIGNMENT_NUMBER(String vENDOR_ASSIGNMENT_NUMBER) {
+		VENDOR_ASSIGNMENT_NUMBER = vENDOR_ASSIGNMENT_NUMBER;
+	}
+
+	public String getVENDOR_EMPLOYEE_NUMBER() {
+		return VENDOR_EMPLOYEE_NUMBER;
+	}
+
+	public void setVENDOR_EMPLOYEE_NUMBER(String vENDOR_EMPLOYEE_NUMBER) {
+		VENDOR_EMPLOYEE_NUMBER = vENDOR_EMPLOYEE_NUMBER;
+	}
+
+	public String getVENDOR_ID() {
+		return VENDOR_ID;
+	}
+
+	public void setVENDOR_ID(String vENDOR_ID) {
+		VENDOR_ID = vENDOR_ID;
+	}
+
+	public String getVENDOR_SITE_ID() {
+		return VENDOR_SITE_ID;
+	}
+
+	public void setVENDOR_SITE_ID(String vENDOR_SITE_ID) {
+		VENDOR_SITE_ID = vENDOR_SITE_ID;
+	}
+
+	public String getWORK_AT_HOME() {
+		return WORK_AT_HOME;
+	}
+
+	public void setWORK_AT_HOME(String wORK_AT_HOME) {
+		WORK_AT_HOME = wORK_AT_HOME;
+	}
+
+	public String getWORK_TERMS_ASSIGNMENT_ID() {
+		return WORK_TERMS_ASSIGNMENT_ID;
+	}
+
+	public void setWORK_TERMS_ASSIGNMENT_ID(String wORK_TERMS_ASSIGNMENT_ID) {
+		WORK_TERMS_ASSIGNMENT_ID = wORK_TERMS_ASSIGNMENT_ID;
+	}
+
+	public String getFREEZE_START_DATE() {
+		return FREEZE_START_DATE;
+	}
+
+	public void setFREEZE_START_DATE(String fREEZE_START_DATE) {
+		FREEZE_START_DATE = fREEZE_START_DATE;
+	}
+
+	public String getFREEZE_UNTIL_DATE() {
+		return FREEZE_UNTIL_DATE;
+	}
+
+	public void setFREEZE_UNTIL_DATE(String fREEZE_UNTIL_DATE) {
+		FREEZE_UNTIL_DATE = fREEZE_UNTIL_DATE;
+	}
+
+	public String getFT_ALTERNATE_REC() {
+		return FT_ALTERNATE_REC;
+	}
+
+	public void setFT_ALTERNATE_REC(String fT_ALTERNATE_REC) {
+		FT_ALTERNATE_REC = fT_ALTERNATE_REC;
+	}
+
+	public String getFT_ALTERNATE_KEY() {
+		return FT_ALTERNATE_KEY;
+	}
+
+	public void setFT_ALTERNATE_KEY(String fT_ALTERNATE_KEY) {
+		FT_ALTERNATE_KEY = fT_ALTERNATE_KEY;
+	}
+
+	public String getACTION_OCCURRENCE_ID() {
+		return ACTION_OCCURRENCE_ID;
+	}
+
+	public void setACTION_OCCURRENCE_ID(String aCTION_OCCURRENCE_ID) {
+		ACTION_OCCURRENCE_ID = aCTION_OCCURRENCE_ID;
+	}
+
+}
