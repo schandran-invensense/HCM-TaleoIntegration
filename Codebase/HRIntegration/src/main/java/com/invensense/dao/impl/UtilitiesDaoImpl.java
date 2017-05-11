@@ -206,7 +206,7 @@ public class UtilitiesDaoImpl implements UtilitiesDao {
 	public String createPerson(List<HCMTaleoEmployee> hcmTaleoEmployees) throws Exception {
 		logger.debug("In createPerson to update " + hcmTaleoEmployees.size() + " number of employees");
 		String selectSql = "select * from XXINV_INTEGRATION_PERSON where person_id=?";
-		String insertSql = "insert into XXINV_INTEGRATION_PERSON values(?,?,?,?)";
+		String insertSql = "insert into XXINV_INTEGRATION_PERSON values(?,?,?,?,?,?)";
 		for (int i = 0; i < hcmTaleoEmployees.size(); i++) {
 
 			List<Map<String, Object>> rows = this.jdbcTemplate.queryForList(selectSql,
@@ -217,14 +217,43 @@ public class UtilitiesDaoImpl implements UtilitiesDao {
 
 			} else {
 				// check if the taleo record is present
-				jdbcTemplate.update(insertSql, hcmTaleoEmployees.get(i).getHcmPersonId(),
+				logger.debug("Inside Else Case with hcm_Person_id :"+hcmTaleoEmployees.get(i).getHcmPersonId()+" & HCMPerson_number :"+
+						hcmTaleoEmployees.get(i).getHcmPersonNumber()+" & HCM_PersonName :"+ hcmTaleoEmployees.get(i).getHcmPersonName()+" & EmployeeId :"
+						+hcmTaleoEmployees.get(i).getEmployeeId());
+				jdbcTemplate.update(insertSql,hcmTaleoEmployees.get(i).getHcmPersonId(),
 						hcmTaleoEmployees.get(i).getHcmPersonNumber(), hcmTaleoEmployees.get(i).getHcmPersonName(),
-						hcmTaleoEmployees.get(i).getEmployeeId());
+						hcmTaleoEmployees.get(i).getEmployeeId(),hcmTaleoEmployees.get(i).getFblPersonId() ,null);
 
 			}
 
 		}
 		return null;
+	}
+	
+	public Employee checkExistingEmployee(String workEmail) throws Exception {
+		  logger.debug("In checkExistingEmployee using workEmail "+workEmail);
+		  String sql = "select PERSON_ID,FBL_PER_ID,PERSON_NUM from xxinv_insert_perid_temp where work_email=? and ROWNUM=1";
+
+		  Employee emp = new Employee();
+		  List<Map<String, Object>> rows = this.jdbcTemplate.queryForList(sql, workEmail);
+		  if (rows != null && rows.size() > 0) {
+		   logger.debug("Inside getPerson :" + rows.size());
+		   Map<String, Object> item = rows.get(0);
+		   try {
+		    emp.setFBLPersonId((String) item.get("FBL_PER_ID"));
+		    emp.setHCMPersonID((String) item.get("PERSON_ID"));
+		    emp.setPersonNumber((String) item.get("PERSON_NUM"));
+		    //emp.setPersonNumber(personNumber);
+		    logger.debug("FBL Person Id is :" + (String) item.get("FBL_PER_ID"));
+		    logger.debug("HCM Person Id is :" + (String) item.get("PERSON_ID"));
+		    logger.debug("HCM Person Number is :" + (String) item.get("PERSON_NUM"));
+		   } catch (Exception e) {
+		    e.printStackTrace();
+		   }
+
+		  
+		}
+		  return emp;
 	}
 
 }

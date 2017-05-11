@@ -23,8 +23,10 @@ import com.invensense.connector.TaleoConnector;
 import com.invensense.dao.EmployeeOperationsDao;
 import com.invensense.dao.UtilitiesDao;
 import com.invensense.impl.hcm.UploadFile;
+import com.invensense.impl.taleo.CreateFBLWorkRelations;
 import com.invensense.impl.taleo.CreatePersonFiles;
 import com.invensense.impl.taleo.CreateWorkRelations;
+import com.invensense.model.hcmtaleo.Employee;
 import com.invensense.model.hcmtaleo.HCMTaleoEmployee;
 import com.invensense.utils.CreateEmployeeConstants;
 
@@ -104,11 +106,6 @@ public class EmployeeOperationsDaoImpl implements EmployeeOperationsDao {
 				logger.debug("Business Unit Id : " + hcmTaleoEmployee.getBusinessUnit());
 				logger.debug("State Id : " + hcmTaleoEmployee.getState());
 				
-				 String personNumber = uDao.getPersonIdSequence();
-				    logger.debug("Person number for the employee id :: "+hcmTaleoEmployee.getEmployeeId()+" is  "+personNumber);
-				    
-				    hcmTaleoEmployee.setHcmPersonNumber(personNumber);
-				// Add the constants
 				hcmTaleoEmployee.setHcmLegalEntity(uDao.getHCMId(hcmTaleoEmployee.getLegalEntity()).getHcmGuid());
 				hcmTaleoEmployee
 						.setHcmLegislationCode(uDao.getHCMId(hcmTaleoEmployee.getLegislationCode()).getDescription());
@@ -120,6 +117,65 @@ public class EmployeeOperationsDaoImpl implements EmployeeOperationsDao {
 				logger.debug("Legal entity : " + hcmTaleoEmployee.getHcmLegalEntity());
 				logger.debug("Business Unit : " + hcmTaleoEmployee.getHcmBusinessUnit());
 
+				//check if the person exists in the database table
+				Employee emp = new Employee();
+				if(hcmTaleoEmployee.getEmailAddress()!=null)
+			    {
+				   logger.debug("Work EmailID : " + hcmTaleoEmployee.getEmailAddress());
+				   emp=uDao.checkExistingEmployee(hcmTaleoEmployee.getEmailAddress());
+			    }
+				if ((emp.getFBLPersonId()!=null)&&(emp.getFBLPersonId()!=""))
+				{
+					logger.debug("Creating WR only Begin with PersonId: "+emp.getHCMPersonID());
+					hcmTaleoEmployee.setFblPersonId(emp.getFBLPersonId());
+					hcmTaleoEmployee.setHcmPersonNumber(emp.getPersonNumber());
+					hcmTaleoEmployee.setHcmPersonId(emp.getHCMPersonID());
+					logger.debug("HCMTALEOPERSON ID PersonId: "+hcmTaleoEmployee.getHcmPersonId());
+					if (((hcmTaleoEmployee.getHcmLegislationCode() != null)
+						&& (!hcmTaleoEmployee.getHcmLegislationCode().isEmpty()))
+						|| ((hcmTaleoEmployee.getHcmLegalEntity() != null)
+								&& (!hcmTaleoEmployee.getHcmLegalEntity().isEmpty()))) {
+					Date d1 = new Date();
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+					String fileName = "FBL_" + sdf.format(d1);
+					String folder = CreateEmployeeConstants.getCreateFolder() + fileName;
+					logger.debug("Creating WR Folder name ::" + folder+" created for Person "+hcmTaleoEmployee.getFirstName()+" "+hcmTaleoEmployee.getLastName());
+					File dir = new File(folder);
+					dir.mkdirs();
+					dir.setExecutable(true);
+					dir.setWritable(true);					
+					String wFolderName = folder + File.separator + "WorkRelationship";					
+					File wFolder = new File(folder + File.separator + "WorkRelationship");
+					wFolder.mkdirs();
+					wFolder.setWritable(true);
+					wFolder.setExecutable(true);
+					logger.debug("Creating WR only Before try : ");
+					try {
+						UploadFile uploadFile = new UploadFile();
+						com.invensense.utils.ZipUsingJavaUtil zipUsingJavaUtil = new com.invensense.utils.ZipUsingJavaUtil();						
+						logger.debug("Creating WR only inside try : ");
+						CreateFBLWorkRelations.createAllWorkRelations(wFolder, hcmTaleoEmployee);
+						//CreateFBLWorkRelations.createAllWorkRelations(wFolder, hcmTaleoEmployee);
+						String wrZipName = folder + File.separator + fileName + "WR.zip";	
+						zipUsingJavaUtil.zipFiles(wFolderName, wrZipName);
+						uploadFile.uploadFileAndLoad(fileName + "WR", wrZipName, "WorkRelationship");
+						hcmTaleoEmployees.set(0, hcmTaleoEmployee);
+						uDao.createPerson(hcmTaleoEmployees);
+					} catch (Exception e) {
+						logger.error("In createEmployee employee operations:::exception");
+						logger.log(Level.FATAL, e.getMessage(), e);
+						throw new Exception(e);
+
+					}
+			    }
+			    }
+				else{
+				 String personNumber = uDao.getPersonIdSequence();
+				    logger.debug("Person number for the employee id :: "+hcmTaleoEmployee.getEmployeeId()+" is  "+personNumber);
+				    
+				    hcmTaleoEmployee.setHcmPersonNumber(personNumber);
+				// Add the constants
+				
 				if (((hcmTaleoEmployee.getHcmLegislationCode() != null)
 						&& (!hcmTaleoEmployee.getHcmLegislationCode().isEmpty()))
 						|| ((hcmTaleoEmployee.getHcmLegalEntity() != null)
@@ -146,8 +202,8 @@ public class EmployeeOperationsDaoImpl implements EmployeeOperationsDao {
 					wFolder.setExecutable(true);
 					try {
 						UploadFile uploadFile = new UploadFile();
-						hcmTaleoEmployeeNew = CreatePersonFiles.createAllPersonFiles(pFolder, hcmTaleoEmployee);
 						com.invensense.utils.ZipUsingJavaUtil zipUsingJavaUtil = new com.invensense.utils.ZipUsingJavaUtil();
+						hcmTaleoEmployeeNew = CreatePersonFiles.createAllPersonFiles(pFolder, hcmTaleoEmployee);						
 						String pZipName = folder + File.separator + fileName + "P.zip";
 						zipUsingJavaUtil.zipFiles(pFolderName, pZipName);
 
@@ -158,6 +214,7 @@ public class EmployeeOperationsDaoImpl implements EmployeeOperationsDao {
 					          Thread.currentThread().interrupt();
 					      }
 						CreateWorkRelations.createAllWorkRelations(wFolder, hcmTaleoEmployee);
+						//CreateFBLWorkRelations.createAllWorkRelations(wFolder, hcmTaleoEmployee);
 						String wrZipName = folder + File.separator + fileName + "WR.zip";	
 						zipUsingJavaUtil.zipFiles(wFolderName, wrZipName);
 						uploadFile.uploadFileAndLoad(fileName + "WR", wrZipName, "WorkRelationship");
@@ -177,6 +234,7 @@ public class EmployeeOperationsDaoImpl implements EmployeeOperationsDao {
 					throw new Exception("Legal entity or Legislation code not found");
 				}
 
+			}
 			}
 
 		} catch (Exception e) {

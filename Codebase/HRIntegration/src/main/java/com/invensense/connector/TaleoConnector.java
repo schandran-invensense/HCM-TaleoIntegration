@@ -523,6 +523,7 @@ public class TaleoConnector {
 			hcmTaleoEmployee.setLastName(emp.getLastName());
 			hcmTaleoEmployee.setMiddleName(emp.getMiddleInitial());
 			if ((emp.getEmail() != null) && (!emp.getEmail().equalsIgnoreCase(""))) {
+				logger.debug("Setting email :"+emp.getEmail());
 				hcmTaleoEmployee.setEmailAddress(emp.getEmail());
 			} else {
 				hcmTaleoEmployee

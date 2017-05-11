@@ -18,9 +18,9 @@ public class ConnectionManager {
      */
     
     private static final String driverName  = "oracle.jdbc.driver.OracleDriver";
-    private static final String url  = "jdbc:oracle:thin:@devdb.invcorp.invensense.com:1528:SBOX";
+    private static final String url  = "jdbc:oracle:thin:@devdb.invcorp.invensense.com:1528:INVNPRJ1";
     private static final String username  = "apps";
-    private static final String password  = "sb0x_apps";
+    private static final String password  = "prj1_apps";
     private static Connection con;
     private Logger logger = Logger.getLogger(this.getClass());
     

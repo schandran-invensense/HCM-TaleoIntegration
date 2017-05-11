@@ -15,4 +15,5 @@ public interface UtilitiesDao {
 	public HCMMap getHCMId(String srcId) throws Exception;
 	public String createPerson(List<HCMTaleoEmployee> hcmTaleoEmployees) throws Exception;
 	public String updateNewHirePerson(String hcmPersonNum,String hcmPersonId) throws Exception;
+	public Employee checkExistingEmployee(String workEmail) throws Exception;
 }

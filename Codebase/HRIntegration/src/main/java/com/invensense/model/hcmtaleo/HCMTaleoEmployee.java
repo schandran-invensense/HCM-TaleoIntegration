@@ -57,6 +57,8 @@ public class HCMTaleoEmployee {
 	 private String position;
 	private String projStartDate;
 	
+	private String fblPersonId;
+	
 	
 	public String getLanguage() {
 		return language;
@@ -371,6 +373,12 @@ public class HCMTaleoEmployee {
 	}
 	public void setProjStartDate(String projStartDate) {
 		this.projStartDate = projStartDate;
+	}
+	public String getFblPersonId() {
+		return fblPersonId;
+	}
+	public void setFblPersonId(String fblPersonId) {
+		this.fblPersonId = fblPersonId;
 	}
 	
 	
